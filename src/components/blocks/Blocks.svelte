@@ -44,3 +44,10 @@
         {block.type} -->
     {/if}
 {/each}
+
+<style>
+    .notion-quote {
+        background: var(--lightGray);
+        padding: var(--s-4);
+    }
+</style>

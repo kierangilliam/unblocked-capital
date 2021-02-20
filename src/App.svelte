@@ -20,6 +20,7 @@
     @import '../assets/global.css';
 
     :global(h1, h2, h3, .page-link) {
+        margin-top: var(--s-4) !important;
         margin-bottom: var(--s-4) !important;
     }
     :global(p) {
@@ -35,6 +36,9 @@
     }
     :global(.page-link:hover) {
         box-shadow: var(--level-2);
+    }
+    .wrapper {
+        font-size: 18px;
     }
      
     .title {

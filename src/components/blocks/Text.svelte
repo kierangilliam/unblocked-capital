@@ -17,7 +17,7 @@
         {/each}
     </p>
 {:else}
-    <!-- <br /> -->
+    <br />
 {/if}
 
 <style>
