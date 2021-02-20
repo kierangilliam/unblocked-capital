@@ -6,13 +6,13 @@
 
 <Theme>
     <div class='wrapper'>
-    <div class='title'>
-        <h4 on:click={() => window.location.href = '/'}>Unblocked Captial</h4>
-        <h4>Learning to code for algorithmic trading from scratch.</h4>
-    </div>
-      <div class='container'>
-          <Router {routes} />
-      </div>
+        <div class='title'>
+            <h4 on:click={() => window.location.href = '/'}>Unblocked Captial</h4>
+            <h4>Learning to code for algorithmic trading from scratch.</h4>
+        </div>
+        <div class='container'>
+            <Router {routes} />
+        </div>
     </div>
 </Theme>
 

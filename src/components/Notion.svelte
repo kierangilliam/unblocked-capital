@@ -1,43 +1,62 @@
 <script>
-    import Code from './blocks/Code.svelte'
-    import Text from './blocks/Text.svelte'
+    import { url } from '@roxi/routify'
+    import Blocks from './blocks/Blocks.svelte'
+    import EmailForm from './EmailForm.svelte'
 
     export let blocks
     export let gotoPage
     
     $: title = blocks[0]
     $: pageBlocks = blocks.slice(1)
+        // WIP blocks are prefaced with 'RM'
+        .filter(b => {
+            let content = b?.properties?.title ?? []
+
+            if (content[0] && content[0][0]) {
+                return content[0][0].startsWith('RM') === false
+            }
+
+            return true
+        })
+
+    $: emailSplitIndex = nthOf(pageBlocks, 4, b => b.type === 'text')
+    $: blocksBefore = pageBlocks.slice(0, emailSplitIndex)
+    $: blocksAfter = pageBlocks.slice(emailSplitIndex)
+
+    const nthOf = (list, n, cb) => {
+        let index = 0
+        let result = 0
+        for (let i = 0; i < n; i++) {
+            index = list.slice(result).findIndex(cb)
+            result += index + 1
+        }
+        return result
+    }
 </script>
 
-<h1>{title.properties.title[0][0]}</h1>
-
-{#each pageBlocks as block}
-    {#if block.type === 'header'}
-        <h1>{block.properties.title[0][0]}</h1>
-    {:else if block.type === 'page'}
-        <div class='page-link' on:click={gotoPage(block.id)}>{block.properties.title[0][0]}</div>
-    {:else if block.type === 'sub_header'}
-        <h2>{block.properties.title[0][0]}</h2>
-    {:else if block.type === 'sub_sub_header'}
-        <h3>{block.properties.title[0][0]}</h3>
-    {:else if block.type === 'text'}
-        <Text {block} />
-    {:else if block.type === 'divider'}
-        <hr />
-    {:else if block.type === 'quote'}
-        <blockquote class='notion-quote'>
-            {block.properties.title[0][0]}
-        </blockquote>
-    {:else if block.type === 'code'}
-        <Code
-            code={block.properties.title[0][0]}
-            lang={block.properties.language[0][0]} />
-    <!-- {:else}
-        {block.type} -->
+<div class='title'>
+    <h1>{title.properties.title[0][0]}</h1>
+    {#if $url() !== ''}
+        <a href='{$url('/')}'>Home</a>
     {/if}
+</div>
+
+
+{#if pageBlocks.length > 0}
+    <Blocks blocks={blocksBefore} {gotoPage} />
+    <EmailForm />
+    <Blocks blocks={blocksAfter} {gotoPage} />
 {:else}
     <div>
         Nothing here yet... come back soon
     </div>
-    <a href="/">Home</a>
-{/each}
+    <a href='/'>Home</a>
+{/if}
+
+<style>
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

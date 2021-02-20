@@ -9,7 +9,7 @@
     })()
 
     const gotoPage = (id: string) => () => {
-        $goto(`./post/${id}`)
+        $goto(`/post/${id}`)
     }
 
     metatags.title = 'Unblocked Captial'

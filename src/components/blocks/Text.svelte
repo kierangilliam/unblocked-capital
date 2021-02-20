@@ -6,12 +6,22 @@
     <p>
         {#each block.properties.title as items}
             {#if items.length > 1}
-                <a href={items[1][0][1]} target="_blank" rel="noopener">
-                    {items[0]}
-                </a>
+                {#if items[1][0][0] === "i"}    
+                    <span class="i">{items[0]}</span>
+                {:else}
+                    <a href={items[1][0][1]} target="_blank" rel="noopener">
+                        {items[0]}
+                    </a>
+                {/if}
             {:else}{items[0]}{/if}
         {/each}
     </p>
 {:else}
-    <br />
+    <!-- <br /> -->
 {/if}
+
+<style>
+    .i {
+        font-style: italic;
+    }
+</style>

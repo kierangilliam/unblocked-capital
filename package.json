@@ -63,6 +63,7 @@
       ]
    },
    "dependencies": {
-      "@leveluptuts/svelte-notion": "^0.0.7"
+      "@leveluptuts/svelte-notion": "^0.0.7",
+      "svelte-highlight": "^0.7.1"
    }
 }
