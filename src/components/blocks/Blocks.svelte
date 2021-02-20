@@ -28,6 +28,8 @@
         <h2>{title(block)}</h2>
     {:else if block.type === 'sub_sub_header'}
         <h3>{title(block)}</h3>
+    {:else if block.type === 'numbered_list'}
+        <li>{title(block)}</li>
     {:else if block.type === 'text'}
         <Text {block} />
     {:else if block.type === 'divider'}

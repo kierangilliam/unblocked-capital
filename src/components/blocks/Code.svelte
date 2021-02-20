@@ -13,12 +13,11 @@
     {@html code}
 </div>
 
-
 <style>
-    
     div {
         border: var(--line);
         border-radius: var(--borderRadius);
         padding: 0 var(--s-4);
+        overflow-x: scroll;
     }
 </style>
