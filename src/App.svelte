@@ -7,8 +7,8 @@
 <Theme>
     <div class='wrapper'>
         <div class='title'>
-            <h4 on:click={() => window.location.href = '/'}>Unblocked Captial</h4>
-            <h4>Learning to code for algorithmic trading from scratch.</h4>
+            <h3 on:click={() => window.location.href = '/'}>Unblocked Captial</h3>
+            <h5>Learning to code for algorithmic trading from scratch.</h5>
         </div>
         <div class='container'>
             <Router {routes} />
@@ -19,7 +19,7 @@
 <style>
     @import '../assets/global.css';
 
-    :global(h1, h2, h3, .page-link) {
+    :global(h1, h2, h3, h4, h5, .page-link) {
         margin-top: var(--s-4) !important;
         margin-bottom: var(--s-4) !important;
     }
@@ -57,6 +57,21 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    /* small screens */
+    @media only screen and (max-width: 700px) {
+        .wrapper {
+            align-items: initial;
+            padding: 0 var(--s-3); 
+        }
+
+        .title {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100vw;
+            min-width: 0;
+        }
     }
 
     .container {

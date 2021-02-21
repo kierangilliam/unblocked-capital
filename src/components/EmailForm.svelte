@@ -50,6 +50,15 @@
         width: var(--s-4);
         height: 1px;
     }
+    /* small screens */
+    @media only screen and (max-width: 700px) {
+        #mc_embed_signup {
+            padding: var(--s-8);
+        }
+        .name {
+            flex-direction: column;
+        }
+    }
 
     .name, .email {
         margin-bottom: var(--s-2);    
