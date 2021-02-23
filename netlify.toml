@@ -18,6 +18,6 @@
   status = 200
   
   # SPA only
-  # from = "/*"
-  # to = "/__app.html"
-  # status = 200
+  from = "/*"
+  to = "/__app.html"
+  status = 200
